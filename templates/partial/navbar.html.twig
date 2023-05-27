@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">SymLivres</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarColor02">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link active" href="{{ path('app_home') }}">Home
+            <span class="visually-hidden">(current)</span>
+          </a>
+        </li>
+        {% for cat in categoryRepository.findAll() %}
+            <li class="nav-item">
+            <a class="nav-link" href="{{ path('livre_By_categorie',{'id':cat.id})}}">{{cat.libelle}}</a>
+        </li>
+        {% endfor %}
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contactez-nous</a>
+        </li>
+      </ul>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+            <a class="nav-link mx-1" href="{{ path('app_register')}}"><i class="fas fa-shopping-cart"></i>Panier</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link mx-1" href="{{ path('app_register')}}"><i class="fas fa-user-plus"></i>Register</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link mx-1" href="{{ path('app_login')}}"><i class="fas fa-sign-in"></i>Login</a>
+        </li>
+            <li class="nav-item">
+            <a class="nav-link mx-1" href="{{ path('app_logout')}}"><i class="fas fa-sign-out"></i>Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

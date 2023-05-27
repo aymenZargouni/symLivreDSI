@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Titre</th>
+      <th scope="col">Catégorie</th>
+      <th scope="col">Résumé</th>
+      <th scope="col">Editeur</th>
+      <th scope="col">Date Edition</th>
+      <th scope="col">Prix</th>
+      <th scope="col" colspan="2">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+{% for l in livres %}
+    <tr>
+        <th scope="row">{{l.id}}</th>
+        <td>{{l.titre}}</td>
+        <td>{{l.categories.libelle}}</td>
+        <td>{{l.resume}}</td>
+        <td>{{l.editeur}}</td>
+        <td>{{l.dateEdition | date('Y-m-d')}}</td>
+        <td>{{l.prix}}</td>
+        <td><a href="{{ path('admin_livres_id_delete',{'id':l.id}) }}" class="btn btn-danger btn-sm">Supprimer</a></td>
+        <td><a href="" class="btn btn-success btn-sm">voir détail...</a></td>
+    </tr>
+{% endfor %}
+</table>
+<div class="navigation">
+    {{ knp_pagination_render(livres) }}
+</div>
+{% endblock %}

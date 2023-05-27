@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h1>Nos Livres Phares</h1>
+    <div class="row">
+        {% for l in livres %}
+            
+        <div class="col-3 mt-3">
+            <div class="card">
+                <img src="{{l.image}}" alt="photo">
+                <div class="card-body border-1">
+                    <h4 class="card-title">{{l.titre}} ({{l.prix}}DT)</h4>
+                    <h6>{{l.categories.libelle}}<h6>
+                    <p class="card-text">
+                        Editeur : {{l.editeur}}<br>
+                        Date Edition : {{l.dateEdition| date('m-d-Y')}}
+                        <a href="{{ path('add_cart',{'id' : l.id })}}" class="btn btn-primary btn-sm"><i class="fas fa-shopping-cart"></i>Ajouter au panier</a>
+                        <a href="" class="btn btn-success btn-sm">Voir détails</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}
